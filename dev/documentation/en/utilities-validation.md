@@ -74,7 +74,7 @@ Validation rules can be defined in an entity's [schema](./architecture-entities#
 
 These rules will be applied when the entity's [Service](./architecture-services) class validates user input that contains a `numAnnouncementsHomepage` prop. See the [Service Validation](#service-validation) section below.
 
-Every property that can be empty or null must have the `nullable` validation rule assigned, or it will throw an error when it is empty.
+Every property that can be empty or null must have the `nullable` validation rule assigned or it will throw an error when it is empty.
 
 ```json
 {
@@ -87,12 +87,12 @@ Every property that can be empty or null must have the `nullable` validation rul
 }
 ```
 
-> You never need to add the `array`, `boolean`, `integer` or `string` validation rules. These will be applied automatically based on the `type` property.
+> You never need to add the `array`, `boolean`, `integer`, or `string` validation rules. These will be applied automatically based on the `type` property.
 {:.notice}
 
 ## Service Validation
 
-An entity's [Service](./architecture-services) class should implement a `validate` method which validates props against the schema. Use the `SchemaService` to access helper methods for working with the schema.
+An entity's [Service](./architecture-services) class should implement a `validate` method, which validates props against the schema. Use the `SchemaService` to access helper methods for working with the schema.
 
 ```php
 class PKPContextService implements EntityWriteInterface {
@@ -123,7 +123,7 @@ if ($action === VALIDATE_ACTION_ADD) {
 }
 ```
 
-The `allowedLocales` helper method will throw an error if values are provided for any locales which are not supported by the journal or press.
+The `allowedLocales` helper method will throw an error if values are provided for any locales that are not supported by the journal or press.
 
 ```php
 \ValidatorFactory::allowedLocales(
@@ -133,7 +133,7 @@ The `allowedLocales` helper method will throw an error if values are provided fo
 );
 ```
 
-The `requirePrimaryLocale` helper method will validate props that should be required in the primary locale, but not required in other locales.
+The `requirePrimaryLocale` helper method will validate props that should be required in the primary locale but not required in other locales.
 
 
 ```php
@@ -187,7 +187,7 @@ function validate($action, $props, $allowedLocales, $primaryLocale) {
 
 ## Custom Rules
 
-OJS and OMP have added custom validation rules for ISSNs, ORCIDs and more. These rules can be applied in the schema.
+OJS and OMP have added custom validation rules for ISSNs, ORCIDs, and more. These rules can be applied in the schema.
 
 ```json
 {
