@@ -4,15 +4,15 @@ title: Entities - Technical Documentation - OJS/OMP
 
 # Entities
 
-An entity is any type of object in the application, such as a submission, review assignment, discussion or file.
+An entity is any type of object in the application, such as a submission, review assignment, discussion, or file.
 
 Each entity is described in a schema file and is represented in the application with the following:
 
 - A `DataObject` [class](#dataobject-class) for instantiating objects of this entity.
-- A [Service](./architecture-services), like `SubmissionService`, to get, validate, add, edit and delete these objects.
+- A [Service](./architecture-services), like `SubmissionService`, to get, validate, add, edit, and delete these objects.
 - A [Data Access Object](#schemadao), like `SubmissionDAO`, to communicate between the objects and the database.
-- A json [schema](#schemas) which defines the properties, defaults and validation rules for these objects.
-- An [APIHandler](./architecture-handlers), like `SubmissionHandler`, which serves a REST API endpoint for these objects.
+- A json [schema](#schemas), which defines the properties, defaults, and validation rules for these objects.
+- An [APIHandler](./architecture-handlers), like `SubmissionHandler`, which serves as a REST API endpoint for these objects.
 
 ## DataObject class
 
@@ -72,7 +72,7 @@ $name = $journal->setData('name', 'Journal of Public Knowledge', 'en_US');
 
 ### Helpers
 
-A `DataObject` class may contain additional helper methods to compile or format the requested data. For example, the `Issue` class provides a method that will return a string with the volume, number, year and title.
+A `DataObject` class may contain additional helper methods to compile or format the requested data. For example, the `Issue` class provides a method that will return a string with the volume, number, year, and title.
 
 ```php
 $issue->setData('volume', 3);
@@ -214,7 +214,7 @@ These schema files will be merged to produce a combined schema. When identical p
 
 ## SchemaDAO
 
-When an entity has a schema, it's [DAO](./architecture-database) should extend the `SchemaDAO` class. This class will use the schema file to ensure that data being read from and written to the database conforms to the schema.
+When an entity has a schema, its [DAO](./architecture-database) should extend the `SchemaDAO` class. This class will use the schema file to ensure that data being read from and written to the database conforms to the schema.
 
 ## API Documentation
 
@@ -222,7 +222,7 @@ The schema files are used to generate the [API documentation](/dev/api).
 
 ## Extending Schemas
 
-Hooks can be used to add, edit or remove properties of an entity.
+Hooks can be used to add, edit, or remove properties of an entity.
 
 Add an `institutionalHome` property to the `Context` entity.
 
@@ -236,7 +236,7 @@ HookRegistry::register('Schema::get::context', function($hookName, $schema) {
 });
 ```
 
-Require a journal acronym to be 3 characters or less.
+Require a journal acronym to be 3 characters or fewer.
 
 ```php
 HookRegistry::register('Schema::get::context', function($hookName, $schema) {
