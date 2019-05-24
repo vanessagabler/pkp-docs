@@ -119,7 +119,7 @@ $queryDao->update(
 );
 ```
 
-Most `DAO`s include helper methods to insert, update or delete records when passed a `DataObject`.
+Most `DAO`s include helper methods to insert, update, or delete records when passed a `DataObject`.
 
 ```php
 $reviewRoundDao->insertObject($reviewRound);
@@ -146,7 +146,7 @@ $qb->filterByContext($contextId)
   ->orderBy('title');
 ```
 
-Once the `QueryBuilder` has been configured it can be compiled to get a `QueryObject`.
+Once the `QueryBuilder` has been configured, it can be compiled to get a `QueryObject`.
 
 ```php
 $qo = $qb->get();
@@ -159,11 +159,11 @@ $submissionDao = DAORegistry::getDAO('SubmissionDAO');
 $result = $submissionDao->retrieve($qo->toSql(), $qo->getBindings());
 ```
 
-QueryBuilders should make it easier to retrieve records from the database by providing simple, well-documented methods for getting and filtering records. In most cases, a QueryBuilder will help fulfil a Service class's `getMany()` method.
+QueryBuilders should make it easier to retrieve records from the database by providing simple well-documented methods for getting and filtering records. In most cases, a QueryBuilder will help fulfil a Service class's `getMany()` method.
 
 ## SchemaDAOs
 
-If an entity is defined using a [schema](./architecture-entities#schemas), its `DAO` should extend the `SchemaDAO` class. The `SchemaDAO` implements the `insertObject()`, `updateObject()`, `deleteObject()` and `_fromRow()` methods based on the schema.
+If an entity is defined using a [schema](./architecture-entities#schemas), its `DAO` should extend the `SchemaDAO` class. The `SchemaDAO` implements the `insertObject()`, `updateObject()`, `deleteObject()`, and `_fromRow()` methods based on the schema.
 
 ## Usage Guidance
 
@@ -173,12 +173,12 @@ A `DAO` may implement additional methods to perform bulk updates or otherwise mi
 DAORegistry::getDAO('IssueDAO')->deleteAllPubIds($contextId, 'doi');
 ```
 
-A `DAO` method like this should be wrapped by a [Service](./architecture-services) method which performs the action, so that notifications can be sent, hooks can be called, and related tasks can be executed.
+A `DAO` method like this should be wrapped by a [Service](./architecture-services) method that performs the action so that notifications can be sent, hooks can be called, and related tasks can be executed.
 
 When deciding whether or not to write such a method, consider the performance benefits of your custom `DAO` method against the following downsides:
 
-- It will not fire the hooks that are typically fired when an entity is read, added or updated. Plugin developers are left "out of the loop".
-- It will have to be maintained independently. The more common read, write and delete database methods will probably be tested more regularly.
+- It will not fire the hooks that are typically fired when an entity is read, added, or updated. Plugin developers are left "out of the loop."
+- It will have to be maintained independently. The more common read, write, and delete database methods will probably be tested more regularly.
 - It will have to be manually synced with changes to the entity schema files.
 
 ## Table Structure
