@@ -4,7 +4,7 @@ title: Email Templates - Technical Documentation - OJS/OMP
 
 # Email Templates
 
-Email templates mix customized, editable data with fixed defaults. For this reason, the behavior of the `EmailTemplateService` differs from other entity service classes. This section describes some of the differences.
+Email templates mix customized editable data with fixed defaults. For this reason, the behavior of the `EmailTemplateService` differs from other entity service classes. This section describes some of the differences.
 
 ## Use keys instead of ids
 
@@ -20,11 +20,11 @@ Default templates are installed when the application is created or a new locale 
 
 Default templates can not be deleted, but some of them can be edited or disabled. Check the `canEdit` and `canDisable` properties.
 
-Custom templates are created by the end-user. They are not automatically used by the application. They can be deleted.
+Custom templates are created by the end user. They are not automatically used by the application. They can be deleted.
 
 ## Default template data
 
-Default templates include data that can not be edited and is not available to custom templates. These properties include `canDisable`, `canEdit`, `fromRoleId` and `toRoleId`.
+Default templates include data that can not be edited and is not available to custom templates. These properties include `canDisable`, `canEdit`, `fromRoleId`, and `toRoleId`.
 
 When this data is not available, the values will be returned as `null`.
 
